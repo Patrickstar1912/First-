@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SkillSystem : MonoBehaviour
@@ -10,11 +11,16 @@ public class SkillSystem : MonoBehaviour
     public List<KeyCode> InputBuffer = new List<KeyCode>();
     public float LastInputTime;
 
-    public Camera Cam;   
+    public Camera Cam;
     public string CurrentSkillName;
 
-    [Header("Skill")]
+    [Header("Skill1")]
     public GameObject Skill1Cylinder;
+
+    [Header("Skill2")]
+    public GameObject Meteor;
+    public Transform SpawnPosition;
+    public float launchForce = 30f;
     void Update()
     {
         //InputCountDown
@@ -23,9 +29,9 @@ public class SkillSystem : MonoBehaviour
             InputBuffer.Clear();
         }
 
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-           CastingSkil(CurrentSkillName);
+            CastingSkil(CurrentSkillName);
         }
 
         CheckInput(KeyCode.Q);
@@ -55,6 +61,11 @@ public class SkillSystem : MonoBehaviour
             SetSkill1();
             ClearBuffer();
         }
+        if (combo == "WR")
+        {
+            SetSkill2();
+            ClearBuffer();
+        }
         else if (combo == "QWER")
         {
             SetUltimate();
@@ -77,12 +88,16 @@ public class SkillSystem : MonoBehaviour
         InputBuffer.Clear();
     }
 
-    // ===== 技能函数 =====
+    // Skill Name Setting
     void SetSkill1()
     {
-        CurrentSkillName="CastSkill1";
+        CurrentSkillName = "CastSkill1";
     }
 
+    void SetSkill2()
+    {
+        CurrentSkillName = "CastSkill2";
+    }
     void SetUltimate()
     {
         CurrentSkillName = "CastUltimate";
@@ -90,7 +105,7 @@ public class SkillSystem : MonoBehaviour
 
     public void CastingSkil(string name)
     {
-       Invoke(name, 0f);
+        Invoke(name, 0f);
         CurrentSkillName = null;
     }
 
@@ -99,25 +114,48 @@ public class SkillSystem : MonoBehaviour
         Ray ray = Cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-      
+
         if (Physics.Raycast(ray, out hit))
         {
             Vector3 dir = hit.point - transform.position;
-            dir.y = 0f; 
+            dir.y = 0f;
 
             Quaternion lookRot = Quaternion.LookRotation(dir);
 
             Vector3 prefabEuler = Skill1Cylinder.transform.rotation.eulerAngles;
-            Quaternion finalRot = Quaternion.Euler(  prefabEuler.x, lookRot.eulerAngles.y, lookRot.eulerAngles.z );
+            Quaternion finalRot = Quaternion.Euler(prefabEuler.x, lookRot.eulerAngles.y, lookRot.eulerAngles.z);
 
             GameObject dick = Instantiate(Skill1Cylinder, hit.point, finalRot);
         }
 
     }
 
-    void CastUltimate()
+    void CastSkill2()
     {
-        Debug.Log("释放 大招！！！");
-        
+        Ray ray = Cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 1000f))
+        {
+            Vector3 targetPos = hit.point;
+
+            GameObject comet = Instantiate(Meteor, SpawnPosition.position, Quaternion.identity);
+
+            Vector3 dir = (targetPos - SpawnPosition.position).normalized;
+
+            Rigidbody rb = comet.GetComponent<Rigidbody>();
+
+            rb.linearVelocity = dir * launchForce;
+
+            comet.transform.rotation = Quaternion.LookRotation(dir);
+
+        }
+
+        void CastUltimate()
+        {
+            Debug.Log("释放 大招！！！");
+
+        }
     }
 }
+
