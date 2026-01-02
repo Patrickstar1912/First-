@@ -17,18 +17,14 @@ public class Explosion : MonoBehaviour
         foreach (Collider col in colliders)
         {
             Rigidbody rb = col.GetComponent<Rigidbody>();
+            if (col.GetComponent<NavMeshAgent>() != null)
+            {
+                col.GetComponent<NavMeshAgent>().enabled = false;
+            }
+
             if (rb != null)
             {
-                 if (col.GetComponent<NavMeshAgent>() != null)
-                {
-                    col.GetComponent<NavMeshAgent>().enabled = false;
-                }
-                              
-                    
-                rb.isKinematic = false;
-                rb.useGravity = true;
-                rb.AddExplosionForce(ExplosionForce, explosionPos, ExplosionRadius, UpwardsModifier, ForceMode.Impulse );
-                
+                rb.AddExplosionForce(ExplosionForce, explosionPos, ExplosionRadius, UpwardsModifier, ForceMode.Impulse );    
             }
         }
     }

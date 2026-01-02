@@ -153,7 +153,7 @@ public class SkillSystem : MonoBehaviour
 
         void CastUltimate()
         {
-            Debug.Log(" Õ∑≈ ¥Û’–£°£°£°");
+            Debug.Log("R skill");
 
         }
     }
