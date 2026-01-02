@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Explosion : MonoBehaviour
 {
@@ -18,7 +19,16 @@ public class Explosion : MonoBehaviour
             Rigidbody rb = col.GetComponent<Rigidbody>();
             if (rb != null)
             {
+                 if (col.GetComponent<NavMeshAgent>() != null)
+                {
+                    col.GetComponent<NavMeshAgent>().enabled = false;
+                }
+                              
+                    
+                rb.isKinematic = false;
+                rb.useGravity = true;
                 rb.AddExplosionForce(ExplosionForce, explosionPos, ExplosionRadius, UpwardsModifier, ForceMode.Impulse );
+                
             }
         }
     }

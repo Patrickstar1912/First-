@@ -123,6 +123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExplosionRadius: 25
-  ExplosionForce: 1000
+  ExplosionForce: 20
   UpwardsModifier: 20
   ExplosionDuration: 0.2
