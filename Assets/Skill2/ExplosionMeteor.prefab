@@ -132,7 +132,7 @@ MonoBehaviour:
   UpwardsModifier: 2000
   ExplosionDuration: 0.2
   skill2audio: {fileID: 2542018507647984496}
-  audioClip: {fileID: 8300000, guid: 0300db2877dab9d4db4f215c0b9f7027, type: 3}
+  audioClip: {fileID: 8300000, guid: 5538b8f25dd495b49b76f3bd9223530d, type: 3}
 --- !u!82 &2542018507647984496
 AudioSource:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class Explosion : MonoBehaviour
     public float ExplosionRadius = 10f;
     public float ExplosionForce = 800f;  
     public float UpwardsModifier = 2f;    
-    public float ExplosionDuration = 0.2f;
+    public float ExplosionDuration = 1f;
     public AudioSource skill2audio;
     public AudioClip audioClip;
     void Start()
