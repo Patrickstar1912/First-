@@ -6,9 +6,9 @@ using Unity.VisualScripting;
 public class scrio : MonoBehaviour
 {
     [Header("PlayerData")] public float moveSpeed = 5f;
-    public float acceleration = 10f;
-    public float angularSpeed = 720f;
-    public float stoppingDistance = 0f;
+    public float acceleration = 120f;
+    public float angularSpeed = 1400f;
+    public float stoppingDistance = 0.15f;
 
     [Header("Arrow")] public GameObject Arrow;
     public float ClickInterval;
@@ -88,20 +88,20 @@ public class scrio : MonoBehaviour
             Agent.enabled = false;
         }
 
-        // 物理接管：开启重力，变成非Kinematic
+       
         rb.isKinematic = false;
         rb.useGravity = true;
     }
 
     public void RecoverToNavMesh()
     {
-        // 停止物理
+        
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
         rb.useGravity = false;
         rb.isKinematic = true;
 
-        // 把角色“吸附回 NavMesh”
+        
         if (NavMesh.SamplePosition(transform.position, out var hit, snapRadius, NavMesh.AllAreas))
         {
             if (!Agent.enabled) Agent.enabled = true;
@@ -109,7 +109,7 @@ public class scrio : MonoBehaviour
         }
         else
         {
-            // 附近没 NavMesh：保持 knocked，或者你可以把它传送到安全点
+            
             Debug.LogWarning("RecoverToNavMesh failed: no NavMesh near current position");
             return;
         }

@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
   moveSpeed: 5
   pickupaudio: {fileID: 654119545743239381}
-  audioClip: {fileID: 8300000, guid: 16b5c0d87938daa46b8c9d940f79c609, type: 3}
+  audioClip: {fileID: 8300000, guid: eec40b30472512542be8ffb944e62d90, type: 3}
   target: {fileID: 0}
 --- !u!82 &654119545743239381
 AudioSource:

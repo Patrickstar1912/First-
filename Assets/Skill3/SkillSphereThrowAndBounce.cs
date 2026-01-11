@@ -4,6 +4,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Rigidbody), typeof(Collider))]
 public class SkillSphereThrowAndBounce : MonoBehaviour
 {
+   
     [Header("Throw (Parabola)")] public bool throwOnStart = true;
 
     // Horizontal
@@ -138,9 +139,10 @@ public class SkillSphereThrowAndBounce : MonoBehaviour
     
     [Header("Explosion Settings")]  
     public float ExplosionRadius = 10f;
-    public float ExplosionForce = 5f;  
+    public float ExplosionForce = 500f;  
     public float UpwardsModifier = 2000f;    
 
+    
     void Explode()
     {
         Vector3 explosionPos = transform.position;

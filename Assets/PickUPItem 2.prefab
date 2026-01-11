@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 21.11, y: 16.15, z: -26.12}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.37244, y: 0.37244, z: 0.37244}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c56653a467ca2d44b8bb858b0afc801e, type: 2}
+  - {fileID: 2100000, guid: 1d041aaf4ccae98418d4a3cbc8743fd7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PickUpItem
   moveSpeed: 5
   pickupaudio: {fileID: 654119545743239381}
-  audioClip: {fileID: 8300000, guid: 16b5c0d87938daa46b8c9d940f79c609, type: 3}
+  audioClip: {fileID: 8300000, guid: eec40b30472512542be8ffb944e62d90, type: 3}
   target: {fileID: 0}
 --- !u!82 &654119545743239381
 AudioSource:
