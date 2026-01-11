@@ -4,15 +4,20 @@ using System.Collections;
 public class Skill1 : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public float Force = 8f;
-    public float DestroyTime = 0.5f;
+    public float Force = 6f;
+    public float DestroyTime = 1f;
     public GameObject Owner;
+    public AudioSource skill1audio;
+    public AudioClip audioClip;
     public void Start()
     {
+        skill1audio.clip = audioClip;  
+        skill1audio.Play();
         Destroy(Owner,DestroyTime);    
     }
     void OnTriggerEnter(Collider other)
     {
+        
         Rigidbody rb = other.GetComponent<Rigidbody>();
         //if (rb == null) return;
 

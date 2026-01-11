@@ -4,10 +4,12 @@ using UnityEngine;
 public class PickUpItem : MonoBehaviour
 {
     //Speed
-    public float moveSpeed = 20f;
-    
-   
+    public float moveSpeed = 100f;
+
+    public AudioSource pickupaudio;
+    public AudioClip audioClip;
     public Transform target;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,10 +23,16 @@ public class PickUpItem : MonoBehaviour
         {
            
             transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+            float arriveDistance = 4f; 
+
+            if (Vector3.Distance(transform.position, target.position) <= arriveDistance)
             
-            if (transform.position == target.position)
             {
-                Destroy(gameObject);
+                Debug.Log("shengyin!");
+                pickupaudio.clip = audioClip;
+                pickupaudio.Play();
+
+                Destroy(gameObject , 3f);
             }
         }
     }

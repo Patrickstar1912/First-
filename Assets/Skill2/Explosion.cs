@@ -8,9 +8,13 @@ public class Explosion : MonoBehaviour
     public float ExplosionRadius = 10f;
     public float ExplosionForce = 800f;  
     public float UpwardsModifier = 2f;    
-    public float ExplosionDuration = 0.2f; 
+    public float ExplosionDuration = 0.2f;
+    public AudioSource skill2audio;
+    public AudioClip audioClip;
     void Start()
     {
+        skill2audio.clip = audioClip;
+        skill2audio.Play();
         Vector3 explosionPos = transform.position;
 
         Collider[] colliders = Physics.OverlapSphere(explosionPos, ExplosionRadius);

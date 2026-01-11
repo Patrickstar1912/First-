@@ -8,9 +8,12 @@ public class SkillTornado : MonoBehaviour
     private Rigidbody rb; // Reference RB
 
     public float liveTime = 5f;
-
+    public AudioSource skill1audio;
+    public AudioClip audioClip;
     void Awake()
     {
+        skill1audio.clip = audioClip;
+        skill1audio.Play();
         // Get RB
         rb = GetComponent<Rigidbody>();
 
