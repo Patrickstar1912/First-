@@ -16,20 +16,19 @@ public class Skill1 : MonoBehaviour
         Rigidbody rb = other.GetComponent<Rigidbody>();
         //if (rb == null) return;
 
-        NavMeshAgent agent = other.GetComponent<NavMeshAgent>();
+        if (other.GetComponent<scrio>() != null)
+        {
+            other.GetComponent<scrio>().EnterPhysics();
+        }
+        else  if (other.GetComponent<scrioNPC>() != null)
+        {
+            other.GetComponent<scrioNPC>().EnterPhysics();
+        }
 
         Vector3 randomDir = Random.insideUnitSphere;
         randomDir.y = 1f;
         randomDir.Normalize();
         scrio s = other.GetComponent<scrio>();
-        
-        if (agent != null)
-        {
-            agent.enabled = false;
-
-
-          
-        }
         
         rb.AddForce(randomDir * Force, ForceMode.Impulse);
     }

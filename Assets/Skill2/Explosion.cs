@@ -17,9 +17,13 @@ public class Explosion : MonoBehaviour
         foreach (Collider col in colliders)
         {
             Rigidbody rb = col.GetComponent<Rigidbody>();
-            if (col.GetComponent<NavMeshAgent>() != null)
+            if (col.GetComponent<scrio>() != null)
             {
-                col.GetComponent<NavMeshAgent>().enabled = false;
+                col.GetComponent<scrio>().EnterPhysics();
+            }
+            else  if (col.GetComponent<scrioNPC>() != null)
+            {
+                col.GetComponent<scrioNPC>().EnterPhysics();
             }
 
             if (rb != null)
